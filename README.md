@@ -1,2 +1,2 @@
-# projeto-individual-legado-em-pontas
-Legado em Pontas desenvolvido para conclusão do Projeto Individual do primeiro semestre na SPTech School.
+# 🩰✨ LEGADO EM PONTAS
+Onde cada passo conta uma história de dedicação e arte.
