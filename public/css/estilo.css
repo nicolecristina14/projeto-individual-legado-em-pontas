@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Alice&family=Imperial+Script&family=Moon+Dance&family=Updock&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Alice&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Alice&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 body {
   margin: 0;
@@ -24,7 +26,7 @@ body {
   margin: auto;
 }
 
-.alice {
+.Playfair-Display {
   font-family: "Playfair Display", serif;
   font-weight: 400px;
   font-style: normal;
@@ -81,7 +83,7 @@ body {
 
 .navbar2 {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   list-style: none;
   color: #e3b062;
@@ -123,17 +125,22 @@ body {
 /* MISSÃO VISÃO VALORES */
 
 .social {
-  background-color: #e5e5e5;
+  background-color: #ea906c;
   display: flex;
+  align-items: center;
+}
+
+.sobre {
+  background-color: #fff3ee;
+  display: flex;
+  align-items: center;
 }
 
 .social .container {
   justify-content: center;
 }
 
-.box img {
-  width: 170px;
-}
+
 
 .social .container .boxes {
   display: flex;
@@ -143,13 +150,99 @@ body {
 }
 
 .social p {
+  display: flex;
   text-align: center;
+  margin-right: 70px;
+  font-size: 25px;
+  font-family: "Lora", cursive;
 }
 
 .box {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.img {
+  margin-left: -40px;
+  width:100px;
+  align-items: flex-start;
+}
+
+.img2 {
+  margin-right: -120px;
+  width:100px;
+  align-items: flex-start;
+}
+
+.img-sobre {
+  margin-top: 20px;
+  position: absolute;
+  right: 0;
+}
+
+.img-titulo {
+  margin-top: 20px;
+  margin-right: 130px;
+  width: 100%;
+  height: auto;
+  align-items: center;
+}
+
+.valores {
+  width: 100%;
+  height: auto;
+}
+
+.valores img {
+  width: 80%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.p{
+  font-family: "Alice", serif;
+  margin-top: -250px;
+  margin-left: 95px;
+  width: 100%;
+  align-items: center;
+  font-size: 58px;
+  white-space: nowrap;
+}
+
+.texto-sobre{
+  display: flex;
+  text-align: center;
+  font-family: "Merriweather", serif;
+  margin-top: 290px;
+  margin-left: -960px;
+  width:60%;
+  font-size: 22px;
+}
+
+.button{
+  bottom: 150px;
+  margin-left: -510px;
+  margin-top: 800px;
+}
+
+.botao{
+  font-family: "Alice", serif;
+  font-size: 19px;
+  height: 40px;
+  width: auto;
+  padding: 0 30px;
+  color: white;
+  border-radius: 8px;
+  background-color: #f79872;
+  border: none;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.botao:hover {
+  background-color: #d67751;
 }
 
 /* FOOTER */
@@ -239,7 +332,7 @@ body {
   justify-content: start;
   padding: 5px 0;
 }
-
+/*
 .botao {
   cursor: pointer;
   font-family: "Barlow", sans-serif;
@@ -253,7 +346,7 @@ body {
   height: 30px;
   align-self: center;
   margin-top: 20px;
-}
+}*/
 
 .loading-div {
   width: 50px;
