@@ -9,7 +9,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Alice", serif;
-  background-color: #f4a180;
+  background-color: #fff3ee;
 }
 
 :root {
@@ -48,6 +48,7 @@ body {
 }
 
 .header {
+  background-color: #f4a180;
   display: flex;
   width: 100%;
   height: var(--tamanho-header);
@@ -189,18 +190,6 @@ body {
   align-items: center;
 }
 
-.valores {
-  width: 100%;
-  height: auto;
-}
-
-.valores img {
-  width: 80%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
 .p{
   font-family: "Alice", serif;
   margin-top: -250px;
@@ -234,22 +223,90 @@ body {
   width: auto;
   padding: 0 30px;
   color: white;
-  border-radius: 8px;
+  border-radius: 20px;
   background-color: #f79872;
   border: none;
   transition: background-color 0.3s ease;
   white-space: nowrap;
+  margin-bottom: 70px;
 }
 
 .botao:hover {
   background-color: #d67751;
 }
 
+#valores {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  background-position: center;
+}
+
+.valores img {
+  width: 100%;
+  height: auto;
+  display: flex;
+  margin: 0 auto;
+}
+
+.valores-formatados{
+ flex-direction: row;
+ display: flex;
+ gap: 100px;
+ background-color: #fff3ee;
+ padding: 50px;
+ margin: 20px;
+}
+
+.disciplina{
+  border-radius: 50px;
+  background-color: #ffc2aa;
+  margin-left: 40px;
+  width: 18%;
+  text-align: center;
+  height: 250px;
+  font-size: 22px;
+}
+
+.persistencia{
+  border-radius: 50px;
+  background-color: #ffc2aa;
+  width: 18%;
+  text-align: center;
+  height: 250px;
+  font-size: 22px;
+}
+
+.sensibilidade{
+  border-radius: 50px;
+  background-color: #ffc2aa;
+  text-align: center;
+  width: 18%;
+  height: 250px;
+  font-size: 22px;
+}
+
+.constancia{
+  border-radius: 50px;
+  background-color: #ffc2aa;
+  text-align: center;
+  width: 18%;
+  height: 250px;
+  font-size: 22px;
+}
+
+.valores-formatados p{
+  margin: 25px;
+}
+
 /* FOOTER */
 
-.footer {
-  background-color: #32b9cd;
-  height: 150px;
+#footer {
+  margin-top: 350px;
+  background-color: #faae8f;
+  height: 300px;
   color: #fff;
   display: flex;
   font-size: 15px;
@@ -258,6 +315,11 @@ body {
 .footer .container {
   justify-content: center;
   text-align: center;
+}
+
+.imagem img{
+  width: 100%;
+ margin-left: 0px;
 }
 
 .footer .container .version {
@@ -478,12 +540,4 @@ input {
   background-image: url('https://cdn-icons-png.flaticon.com/512/1157/1157000.png');
   background-size: cover;
   animation-iteration-count: infinite;
-}
-
-@keyframes bell {
-  0%   {transform: rotate(25deg)}
-  25%  {transform: rotate(-25deg)}
-  50%  {transform: rotate(25deg)}
-  75%  {transform: rotate(-25deg)}
-  100% {transform: rotate(25deg)}
 }
