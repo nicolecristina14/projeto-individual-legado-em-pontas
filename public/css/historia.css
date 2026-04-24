@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Alice&family=Imperial+Script&family=Moon+Dance&family=Updock&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alice&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Alice", serif;
+  background-color: #fff3ee;
+}
+
+:root {
+  --tamanho-header: 80px;
+  --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-footer: 65px;
+}
+
+.container {
+  display: flex;
+  width: 80%;
+  margin: auto;
+}
+
+.Playfair-Display {
+  font-family: "Playfair Display", serif;
+  font-weight: 400px;
+  font-style: normal;
+  align-self: flex-start;
+  margin-top: 70px;
+  margin-left: -5%;
+  width: 100%;
+  font-size: 75px;
+}
+
+.Imperial-Script {
+  font-family: "Imperial Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+  align-self: flex-end;
+  margin-bottom: 80px;
+  font-size: 80px;
+  white-space: nowrap;
+  /*Não deixa que o texto fique em duas linhas, somente em uma*/
+}
+
+.header {
+  background-color: #f4a180;
+  display: flex;
+  width: 100%;
+  height: var(--tamanho-header);
+  border-bottom: 2px solid #da7d30;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 94%;
+}
+
+.header a {
+  text-decoration: none;
+  align-items: center;
+  color: #2d0901;
+  font-size: 22px;
+}
+
+.agora {
+  font-weight: 800;
+}
+
+.navbar1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  color: #e3b062;
+  gap: 160px;
+  /*espaco entre itens*/
+}
+
+.navbar2 {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  list-style: none;
+  color: #e3b062;
+  margin: 1%;
+  gap: 20px;
+}
+
+.header h2 {
+  margin: 0;
+  color: #2d0901;
+}
+
+/* BANNER */
+
+.banner {
+  height: var(--tamanho-banner);
+  color: white;
+  background-image: url('../assets/imgs/teste1.jpg');
+  background-size: cover;
+}
+
+.banner .container {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.banner .container p {
+  width: 40%;
+  margin: 0;
+  padding: 0;
+  font-size: 36px;
+}
+
+.banner .container span {
+  font-weight: 800;
+}
+
+/* História */
+
+.social {
+  background-color: #ea906c;
+  display: flex;
+  align-items: center;
+}
+
+.sobre {
+  background-color: #fff3ee;
+  display: flex;
+  align-items: center;
+}
+
+.social .container {
+  justify-content: center;
+}
+
+
+
+.social .container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 30px 0;
+}
+
+.social p {
+  display: flex;
+  text-align: center;
+  margin-right: 70px;
+  font-size: 25px;
+  font-family: "Lora", cursive;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+#titulo {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background-position: center;
+}
+
+.imagem {
+  display: flex;
+  width: 100%;
+  height: auto;
+}
+
+.imagem img {
+  margin-top: 20px;
+  width: 100%;
+  height: auto;
+}
+
+.historia p {
+  font-family: "Alice", serif;
+  font-size: 30px;
+  align-items: center;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 100px;
+  text-align: center;
+}
+
+.img-flor img{
+  display: flex;
+  justify-self: flex-end;
+  width: 13%;
+  height: auto;
+  margin-top: -150px;
+}
+
+.legado img{
+  display: flex;
+  justify-self: space-around;
+  width: 1300px;
+  height: auto;
+  margin-top: -150px;
+}
+
+#nomes{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.bailarina-direita-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  align-items: center;
+  margin-left: 100px;
+}
+
+.bailarina-img img{
+  display: flex;
+  width: 47%;
+  height: auto;
+  margin-left: 200px;
+}
+
+.bailarina-texto h4{
+  font-family: "Chewy", system-ui;
+  margin-left: 70px;
+  font-size: 37px;
+  margin-top: -10px;
+
+}
+
+.bailarina-texto p {
+  width: 100%;
+  height: auto;
+  margin-left: 70px;
+  font-size: 24px;
+  margin-top: -20px;
+}
+
+.bailarina-img2 img{
+  display: flex;
+  width: 43%;
+  height: auto;
+  margin-left: 50px;
+}
+
+.bailarina-texto2 h4{
+  font-family: "Chewy", system-ui;
+  margin-left: -200px;
+  font-size: 37px;
+  margin-top: -10px;
+
+}
+
+.bailarina-texto2 p {
+  width: 100%;
+  height: auto;
+  margin-left: -200px;
+  font-size: 24px;
+  margin-top: -20px;
+}
+
+.cadastrar img{
+  display: flex;
+  width: 65%;
+  height: auto;
+  margin-top: 100px;
+}
+
+.button{
+  bottom: 150px;
+  margin-left: 0px;
+  margin-top: -150px;
+  margin-bottom: 150px;
+}
+
+.botao{
+  font-family: "Alice", serif;
+  font-size: 19px;
+  height: 40px;
+  width: auto;
+  padding: 0 30px;
+  color: white;
+  border-radius: 20px;
+  background-color: #f79872;
+  border: none;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+  margin-left: 1100px;
+  margin-top: -200px;
+}
+
+.botao:hover {
+  background-color: #d67751;
+}
+
+/* FOOTER */
+
+#footer {
+  background-color: #faae8f;
+  height: 200px;
+  color: #fff;
+  display: flex;
+  font-size: 15px;
+}
+
+.footer .container {
+  justify-content: center;
+  text-align: center;
+}
+
+.imagem {
+  width: 80%;
+  margin-left: 180px;
+}
+
+.footer .container .version {
+  font-size: 12px;
+}
