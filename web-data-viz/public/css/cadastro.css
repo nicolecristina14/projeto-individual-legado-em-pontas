@@ -1,0 +1,331 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Alice&family=Imperial+Script&family=Moon+Dance&family=Updock&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alice&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+  --tamanho-header: 80px;
+  --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Alice", serif;
+  background-color: #fff3ee;
+}
+
+:root {
+  --tamanho-header: 80px;
+}
+
+.container {
+  display: flex;
+  width: 80%;
+  margin: auto;
+}
+
+.Playfair-Display {
+  font-family: "Playfair Display", serif;
+  font-weight: 400px;
+  font-style: normal;
+  align-self: flex-start;
+  margin-top: 70px;
+  margin-left: -5%;
+  width: 100%;
+  font-size: 75px;
+}
+
+.Imperial-Script {
+  font-family: "Imperial Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+  align-self: flex-end;
+  margin-bottom: 80px;
+  font-size: 80px;
+  white-space: nowrap; /*Não deixa que o texto fique em duas linhas, somente em uma*/
+}
+
+.header {
+  background-color: #f4a180;
+  display: flex;
+  width: 100%;
+  height: var(--tamanho-header);
+  border-bottom: 2px solid #da7d30;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 94%;
+}
+
+.header a {
+  text-decoration: none;
+  align-items: center;
+  color: #2d0901;
+  font-size: 22px;
+}
+
+.agora {
+  font-weight: 800;
+}
+
+.navbar1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  color: #e3b062;
+  gap: 160px; /*espaco entre itens*/
+}
+
+.navbar2 {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  list-style: none;
+  color: #e3b062;
+  margin: 1%;
+  gap: 20px;
+}
+
+.header h2 {
+  margin: 0;
+  color: #2d0901;
+}
+
+/* LOGIN */
+
+.login {
+  width: 100%;
+  height: auto;
+  background-size: cover;
+}
+
+.container-flex {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  align-items: center;
+  background-image:linear-gradient(rgba(0, 0, 0, 0.277),
+  rgba(0, 0, 0, 0.277)), 
+ url('../assets/imgs/img-cadastro.jpeg');
+  background-position: center;
+  background-size: 1700px;
+}
+
+.login .container {
+  justify-content: center;
+  align-items: center;
+
+}
+
+.card {
+  margin-top: 80px;
+  margin-bottom: 136px;
+  width: 60%;
+  height: 50%;
+  background-color: #d68667cc;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: rgb(0, 0, 0);
+  flex-direction: column;
+  height: fit-content;
+  padding: 20px 0;
+}
+
+.card h2 {
+  font-family: "Alice", serif;
+  margin: 0;
+  font-size: 35px;
+}
+
+.formulario {
+  display: flex;
+  height: 90%;
+  width: 80%;
+  justify-content: space-around;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formulario span {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.formulario input{
+  border: 2px solid #4b2309db;
+  background-color:#b060418b;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  color: #000000;
+  font-size: 15px;
+}
+
+input::placeholder {
+  color: rgb(0, 0, 0); 
+  font-size: 15px;
+}
+
+.formulario select {
+  height: 40px;
+  border: 2px solid #4b2309db;
+  background-color:#b060418b;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  color: #000000;
+  font-size: 15px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 5px 0;
+}
+
+.botao {
+  cursor: pointer;
+  font-family: "Barlow", sans-serif;
+  border: 0;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #000000;
+  background-color: #451e04c9;
+  width: 120px;
+  height: 30px;
+  align-self: center;
+  margin-top: 10px;
+}
+
+.loading-div {
+  width: 50px;
+  display: none;
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
+}
+
+#div_erros_login {
+  display: none
+}
+
+/* FORMULARIO */
+
+.alerta_erro{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card_erro {
+  display: none;
+  background-color: #fff;
+  color: black;
+  width: 230px;
+  position: fixed;
+  border-radius: 4px;
+  border: #ED145B 3px solid;
+  padding: 10px;
+  margin-right: 10%;
+}
+
+.card_erro #mensagem_erro{
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.formulario .tipo_campo {
+  font-size: 20px;
+  font-weight: 600 !important;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin-bottom: 10px;
+  border: 2px solid #32b9cd;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.btn {
+  font-family: "Barlow", sans-serif;
+  border: 0;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 10px 15px;
+  color: white;
+  background-color: #ED145B;
+  width: 120px;
+  align-self: center;
+  margin-top: 5px;
+}
+
+.loading-div {
+  width: 50px;
+  margin: auto;
+  display: none;
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
+}
+
+/* ALERTA */
+
+#alerta {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.mensagem-alarme {
+  background-color: white;
+  border-radius: 5px;
+  width: 300px;
+  height: 80px;
+  margin: 10px;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.mensagem-alarme h3 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.mensagem-alarme .informacao {
+  width: 66%;
+}
+
+.alarme-sino {
+  width: 48px;
+  height: 48px;
+  animation-name: bell;
+  animation-duration: 4s;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/1157/1157000.png');
+  background-size: cover;
+  animation-iteration-count: infinite;
+}
