@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legado em Pontas | Quiz Personalidade</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alice&family=Barlow:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/dashboards.css">
+    <link rel="icon" href="../assets/imgs/favicon2.ico.png">
+
+    <script src="../js/sessao.js"></script>
+    <script src="../js/alerta.js"></script>
+</head>
+
+<body>
+    <div class="janela">
+        <div class="header-left dash-header">
+            <h1>Legado em Pontas</h1>
+
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+
+            <div class="btn-nav">
+                <a href="./quiz_personalidade.html"></a>
+                <h3>Quiz História</h3>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./mural.html">
+                    <h3>Quiz Personalidade</h3>
+                </a>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./dashboard.html">
+                    <h3>Dashboard</h3>
+                </a>
+            </div>
+
+            <div class="btn-logout" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div>
+        </div>
+
+
+        <div class="dash-right">
+
+            <h1 class="titulo-quiz">Ranking</h1>
+            <p class="subtitulo-quiz">Pontuações dos Usuários</p>
+
+            <table id="tabela_ranking" class="tabela-estilizada">
+                <thead>
+                    <tr>
+                        <th>Nome dos Usuários</th>
+                        <th>Pontuações</th>
+                    </tr>
+                </thead>
+                <tbody id="corpo_tabela">
+                </tbody>
+            </table>
+
+            <div class="nav-botoes" id="nav-botoes">
+                <button class="botao" id="finalizar" onclick="RefazerQuiz()">Refazer Quiz ✓</button>
+            </div>
+            
+
+        </div>
+    </div>
+    </div>
+    <script src="../js/pontuação.js"></script>
+</body>
+
+</html>

@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Cadastro</title>
+  <title>Legado em Pontas | Cadastro</title>
 
   <script src="./js/sessao.js"></script>
 
   <link rel="stylesheet" href="./css/cadastro.css" />
-  <link rel="icon" href="./assets/icon/favicon2.ico" />
+  <link rel="icon" href="./assets/imgs/favicon2.ico.png" />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
@@ -56,8 +56,8 @@
 
           <div class="formulario">
             <div class="campo">
-              <span>Nome:</span>
-              <input id="nome_input" type="text" placeholder="Seu nome" />
+              <span>Nome Completo:</span>
+              <input id="nome_input" type="text" placeholder="Nome Completo" />
             </div>
             <div class="campo">
               <span>E-mail:</span>
@@ -66,7 +66,7 @@
             <div class="campo">
               <span>Experiência com Ballet:</span>
               <select id="experiencia_input">
-                <option disabled selected>Selecione uma opção</option>
+                <option disabled selected value="#">Selecione uma opção</option>
                 <option value="Em formação">Em formação</option>
                 <option value="Formado(a)">Formado(a)</option>
                 <option value="Sem experiência">Sem experiência</option>
@@ -75,19 +75,31 @@
             </div>
             <div class="campo">
               <span>Senha:</span>
-              <input id="senha_input" type="password" placeholder="******" />
+              <div class="input-container">
+                <input id="senha_input" type="password" placeholder="******" />
+                <div class="olho" onclick="visualizar()" style="cursor: pointer;">
+                  <img id="olho_senha" src="../assets/eye2.png" alt="">
+                </div>
+              </div>
             </div>
+
             <div class="campo">
               <span>Confirmação da Senha:</span>
-              <input id="confirmacao_senha_input" type="password" placeholder="******" />
+              <div class="input-container">
+                <input id="confirmacao_senha_input" type="password" placeholder="******" />
+                <div class="olho" onclick="visualizarDnv()" style="cursor: pointer;">
+                  <img id="olho_confirma" src="../assets/eye2.png" alt="">
+                </div>
+              </div>
             </div>
+
             <button class="botao" onclick="cadastrar()">Cadastrar</button>
-           </div>
-           <div id="div_aguardar" class="loading-div">
+          </div>
+          <div id="div_aguardar" class="loading-div">
             <img src="./assets/aguarde-pink3.gif" id="loading-gif" />
           </div>
           <div id="div_erros_login"></div>
-          
+
         </div>
       </div>
     </div>
@@ -101,49 +113,67 @@
 <script>
 
   function cadastrar() {
-    // aguardar();
 
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
-    var nomeVar = nome_input.value;
-    var emailVar = email_input.value;
-    var senhaVar = senha_input.value;
-    var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var experienciaVar = experiencia_input.value;
+    let nomeVar = nome_input.value;
+    let emailVar = email_input.value;
+    let senhaVar = senha_input.value;
+    let confirmacaoSenhaVar = confirmacao_senha_input.value;
+    let experienciaVar = experiencia_input.value;
 
-    // Verificando se há algum campo em branco
-    if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      experienciaVar == ""
-    ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+    let campos = [nomeVar, emailVar, senhaVar, confirmacaoSenhaVar, experienciaVar];
 
-      finalizarAguardar();
-      return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
+    for (let i = 0; i < campos.length; i++) {
+      let campoAtual = campos[i]
+
+      if (campos[i] == "" || campos[i] == "#") {
+        cardErro.style.display = "block"
+        mensagem_erro.innerHTML = `Todos os campos devem ser preenchidos!`
+        finalizarAguardar()
+        return false //para toda a função cadastrar
+      }
     }
 
-     if (senhaVar.length <= 6){
+    if (nomeVar.length <= 1) {
       cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Senha deve conter no mínimo 6 caracteres)";
-        finalizarAguardar();
+      mensagem_erro.innerHTML = "Nome deve ter mais de um caracter!";
+      finalizarAguardar()
       return false;
     }
 
-    if(nomeVar.length <= 1){
+    let temArroba = false
+    let temPonto = false
+
+    for (let i = 0; i < emailVar.length; i++) {
+      if (emailVar[i] == "@") {
+        temArroba = true
+      }
+      if (emailVar[i] == ".") {
+        temPonto = true
+      }
+    }
+
+    if (!temArroba || !temPonto) {
+      cardErro.style.display = "block"
+      mensagem_erro.innerHTML = "E-mail inválido! Deve conter '@' e '.'"
+      finalizarAguardar()
+      return false
+    }
+
+    if (senhaVar.length < 6) {
+      cardErro.style.display = "block"
+      mensagem_erro.innerHTML = "Senha deve conter no mínimo 6 caracteres"
+      finalizarAguardar()
+      return false
+    }
+
+    if (senhaVar != confirmacaoSenhaVar) {
       cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Nome deve ter mais de um caracter!)";
-        finalizarAguardar();
+      mensagem_erro.innerHTML = "As senhas não coincidem!"
+      finalizarAguardar()
       return false;
     }
+
+    setInterval(sumirMensagem, 5000);
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -189,5 +219,31 @@
 
   function sumirMensagem() {
     cardErro.style.display = "none";
+  }
+
+  function visualizar() {
+    var input = document.getElementById('senha_input');
+    var img = document.getElementById('olho_senha');
+
+    if (input.type === 'password') {
+      input.type = 'text';
+      img.src = "../assets/eye.png"
+    } else {
+      input.type = 'password';
+      img.src = "../assets/eye2.png"
+    }
+  }
+
+  function visualizarDnv() {
+    var input = document.getElementById('confirmacao_senha_input')
+    var img = document.getElementById('olho_confirma')
+
+    if (input.type === 'password') {
+      input.type = 'text'
+      img.src = "../assets/eye.png"
+    } else {
+      input.type = 'password'
+      img.src = "../assets/eye2.png"
+    }
   }
 </script>

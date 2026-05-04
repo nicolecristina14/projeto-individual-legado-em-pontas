@@ -128,17 +128,17 @@ body {
 
 .card {
   margin-top: 180px;
-  margin-bottom: 196px;
-  width: 60%;
+  margin-bottom: 215px;
+  width: 50%;
   height: 50%;
   background-color: #d68667cc;
-  border-radius: 5px;
+  border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: rgb(0, 0, 0);
   flex-direction: column;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .card h2 {
@@ -192,6 +192,32 @@ input::placeholder {
   padding: 5px 0;
 }
 
+.input-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.input-container input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.olho {
+  position: absolute;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.olho img {
+  width: 20px;
+  opacity: 0.9;
+  transition: 0.3s;
+}
+
 .botao {
   cursor: pointer;
   font-family: "Barlow", sans-serif;
@@ -205,6 +231,7 @@ input::placeholder {
   height: 30px;
   align-self: center;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .loading-div {
@@ -230,14 +257,15 @@ input::placeholder {
 
 .card_erro {
   display: none;
-  background-color: #fff;
+  background-color: #f4a180d9;
   color: black;
   width: 230px;
   position: fixed;
   border-radius: 4px;
-  border: #ED145B 3px solid;
+  border: #4b2309db 3px solid;
   padding: 10px;
-  margin-right: 10%;
+  margin-right: 5%;
+  margin-top: 10px;
 }
 
 .card_erro #mensagem_erro{
@@ -250,10 +278,6 @@ input::placeholder {
   font-weight: 600 !important;
 }
 
-.formulario {
-  display: flex;
-  flex-direction: column;
-}
 
 input {
   margin-bottom: 10px;
@@ -277,52 +301,9 @@ input {
   margin-top: 5px;
 }
 
-.loading-div {
-  width: 50px;
-  margin: auto;
-  display: none;
-}
 
 .loading-div img {
   height: 50px;
   width: 50px;
 }
 
-/* ALERTA */
-
-#alerta {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
-
-.mensagem-alarme {
-  background-color: white;
-  border-radius: 5px;
-  width: 300px;
-  height: 80px;
-  margin: 10px;
-  padding: 10px 0;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.mensagem-alarme h3 {
-  font-size: 14px;
-  margin: 0;
-}
-
-.mensagem-alarme .informacao {
-  width: 66%;
-}
-
-.alarme-sino {
-  width: 48px;
-  height: 48px;
-  animation-name: bell;
-  animation-duration: 4s;
-  background-image: url('https://cdn-icons-png.flaticon.com/512/1157/1157000.png');
-  background-size: cover;
-  animation-iteration-count: infinite;
-}

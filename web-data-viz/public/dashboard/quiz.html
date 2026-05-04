@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="icon" href="../assets/imgs/favicon2.ico.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legado em Pontas | Quiz Personalidade</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alice&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/dashboards.css">
+
+    <script src="../js/quiz.js"></script>
+    <script src="../js/sessao.js"></script>
+</head>
+
+<body>
+<div class="janela">
+    <div class="header-left dash-header">
+        <h1>Legado em Pontas</h1>
+
+        <div class="hello">
+            <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+        </div>
+
+        <div class="btn-nav-white">
+            <a href="./quiz_personalidade.html"><h3>Quiz História</h3></a>
+        </div>
+
+        <div class="btn-nav">
+            <h3>Quiz Personalidade</h3></a>
+        </div>
+
+        <div class="btn-nav-white">
+            <a href="./dashboard.html"><h3>Dashboard</h3></a>
+        </div>
+
+        <div class="btn-logout" onclick="limparSessao()">
+            <h3>Sair</h3>
+        </div>
+    </div>
+
+
+    <div class="dash-right">
+
+        <h1 class="titulo-quiz">Quem é você no mundo do ballet?</h1>
+        <p class="subtitulo-quiz">Responda as 4 questões e descubra!</p>
+
+        <div class="progresso-wrapper">
+            <div class="progresso-label">
+                <span id="label-questao">Questão 1 de 8</span>
+                <span id="label-pct">13%</span>
+            </div>
+            <div class="progresso-bar">
+                <div class="progresso-fill" id="progresso-fill"></div>
+            </div>
+        </div>
+
+       
+        <div class="card-questao">
+     
+            <div class="questoes ativa" id="questao1">
+                <p class="numero-questao">Questão 01 / 04</p>
+                <p class="texto-questao">Qual é a sua maior motivação ao realizar uma tarefa?</p>
+                <div class="resp">
+                    <label class="opcao"><input type="radio" name="opcao1" value="1"><span class="text">A — Estabelecer uma base sólida e garantir que tudo seja feito com técnica e perfeição.</span></label>
+                    <label class="opcao"><input type="radio" name="opcao1" value="2"><span class="text">B — Garantir que o que estou fazendo alcance o maior número de pessoas e mude vidas.</span></label>
+                    <label class="opcao"><input type="radio" name="opcao1" value="3"><span class="text">C — A busca constante pela elegância, disciplina e pelo reconhecimento de um trabalho bem feito.</span></label>
+                    <label class="opcao"><input type="radio" name="opcao1" value="4"><span class="text">D — Representar algo maior que eu mesma, como meu país ou uma causa importante.</span></label>
+                    <label class="opcao"><input type="radio" name="opcao5" value="5"><span class="text">E — A entrega emocional, o que importa é a história e o sentimento que transmito.</span></label>
+                    <label class="opcao"><input type="radio" name="opcao1" value="6"><span class="text">F — Quebrar barreiras e provar que, com persistência, posso chegar onde poucos chegaram.</span></label>
+                </div>
+            </div>
+
+         
+            <div class="questoes" id="questao2">
+                <p class="numero-questao">Questão 02 / 04</p>
+                <p class="texto-questao">Como você lida com um novo desafio?</p>
+                <div class="resp">
+                    <label class="opcao"><input type="radio" name="opcao2" value="1"><span class="text">A — Estudo os fundamentos primeiro. Sem a base, nada se constrói.</span></label>
+                    <label class="opcao"><input type="radio" name="opcao2" value="2"><span class="text">B — Penso em como posso trazer outras pessoas comigo para esse projeto.</span></label>
+                    <label class="opcao"><input type="radio" name="opcao2" value="3"><span class="text">C — Encaro com disciplina absoluta; não descanso até atingir o padrão esperado.</span></label>
+                    <label class="opcao"><input type="radio" name="opcao2" value="4"><span class="text">D — Aceito o desafio como uma missão de representar minha identidade e raízes.</span></label>
+                    <label class="opcao"><input type="radio" name="opcao2" value="5"><span class="text">E — Mergulho de cabeça na intensidade dramática da situação.</span></label>
+                    <label class="opcao"><input type="radio" name="opcao2" value="6"><span class="text">F — Com foco total no futuro e na resiliência, ignorando quem diz ser impossível.</span></label>
+                </div>
+            </div>
+
+         
+            <div class="questoes" id="questao3">
+                <p class="numero-questao">Questão 03 / 04</p>
+                <p class="texto-questao">No seu grupo de amigos ou trabalho, você é vista como:</p>
+                <div class="resp">
+                    <label class="opcao"><input type="radio" name="opcao3" value="1"><span class="text">A — A mentora que ensina as regras e preza pela tradição.</span></label>
+                    <label class="opcao"><input type="radio" name="opcao3" value="2"><span class="text">B — A pessoa comunicativa que conecta todo mundo e cria oportunidades.</span></label>
+                    <label class="opcao"><input type="radio" name="opcao3" value="3"><span class="text">C — A referência de classe, dedicação e profissionalismo.</span></label>
+                    <label class="opcao"><input type="radio" name="opcao3" value="4"><span class="text">D — A pessoa diplomática que transita bem em qualquer ambiente.</span></label>
+                    <label class="opcao"><input type="radio" name="opcao3" value="5"><span class="text">E — A pessoa intensa, expressiva e que sempre emociona os outros.</span></label>
+                    <label class="opcao"><input type="radio" name="opcao3" value="6"><span class="text">F — O prodígio dedicado que está sempre um passo à frente da sua geração.</span></label>
+                </div>
+            </div>
+
+         
+            <div class="questoes" id="questao4">
+                <p class="numero-questao">Questão 04 / 04</p>
+                <p class="texto-questao">Qual seria o seu cenário de sucesso ideal?</p>
+                <div class="resp">
+                    <label class="opcao"><input type="radio" name="opcao4" value="1"><span class="text">A — Ter fundado algo duradouro que ensine as próximas gerações.</span></label>
+                    <label class="opcao"><input type="radio" name="opcao4" value="2"><span class="text">B — Ver um projeto social seu crescendo e transformando a realidade de muitos.</span></label>
+                    <label class="opcao"><input type="radio" name="opcao4" value="3"><span class="text">C — Ser aplaudida de pé em um teatro lotado após uma performance impecável.</span></label>
+                    <label class="opcao"><input type="radio" name="opcao4" value="4"><span class="text">D — Ser reconhecida por órgãos internacionais como uma embaixadora da sua área.</span></label>
+                    <label class="opcao"><input type="radio" name="opcao4" value="5"><span class="text">E — Ser lembrada pela força da sua personalidade e pela emoção que deixou nas pessoas.</span></label>
+                    <label class="opcao"><input type="radio" name="opcao4" value="6"><span class="text">F — Conquistar uma vaga em uma instituição mundialmente famosa e rigorosa.</span></label>
+                </div>
+            </div>
+
+
+            <div class="nav-botoes" id="nav-botoes">
+                <button class="botao" id="anterior" onclick="AntQuestao()">← Anterior</button>
+                <button class="botao" id="proxima" onclick="ProxQuestao()">Próxima →</button>
+                <button class="botao" id="finalizar" onclick="FinalizarQuiz()" >Finalizar Quiz ✓</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

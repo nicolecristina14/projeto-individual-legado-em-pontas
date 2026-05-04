@@ -141,8 +141,6 @@ body {
   justify-content: center;
 }
 
-
-
 .social .container {
   display: flex;
   justify-content: center;
@@ -180,8 +178,9 @@ body {
 }
 
 .imagem img {
+  margin-left: -302px;
   margin-top: 20px;
-  width: 100%;
+  width: 154%;
   height: auto;
 }
 
@@ -309,7 +308,7 @@ body {
 
 #footer {
   background-color: #faae8f;
-  height: 200px;
+  height: 230px;
   color: #fff;
   display: flex;
   font-size: 15px;
@@ -321,8 +320,8 @@ body {
 }
 
 .imagem {
-  width: 80%;
-  margin-left: 180px;
+  width: 65%;
+  margin-left: 300px;
 }
 
 .footer .container .version {

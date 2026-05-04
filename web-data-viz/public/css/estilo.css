@@ -177,13 +177,13 @@ body {
 }
 
 .img-sobre {
-  margin-top: 20px;
+  margin-top: 40px;
   position: absolute;
   right: 0;
 }
 
 .img-titulo {
-  margin-top: 20px;
+  margin-top: 30px;
   margin-right: 130px;
   width: 100%;
   height: auto;
@@ -319,7 +319,7 @@ body {
 
 .imagem img{
   width: 80%;
- margin-left: 180px;
+ margin-left: 100px;
 }
 
 .footer .container .version {

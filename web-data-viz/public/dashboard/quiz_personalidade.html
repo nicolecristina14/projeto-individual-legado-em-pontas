@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <link rel="icon" href="../assets/imgs/favicon2.ico.png">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,13 +15,10 @@
     <link rel="stylesheet" href="../css/dashboards.css">
 
     <script src="../js/sessao.js"></script>
-    <script src="../js/alerta.js"></script>
 </head>
 
 <body>
 <div class="janela">
-
-    <!-- SIDEBAR -->
     <div class="header-left dash-header">
         <h1>Legado em Pontas</h1>
 
@@ -29,12 +26,12 @@
             <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
         </div>
 
-        <div class="btn-nav-white">
+        <div class="btn-nav">
             <h3>Quiz História</h3>
         </div>
 
-        <div class="btn-nav">
-            <a href="./mural.html"><h3>Quiz Personalidade</h3></a>
+        <div class="btn-nav-white">
+            <a href="./quiz.html"><h3>Quiz Personalidade</h3></a>
         </div>
 
         <div class="btn-nav-white">
@@ -49,10 +46,9 @@
 
     <div class="dash-right">
 
-        <h1 class="titulo-quiz">Que tipo de bailarina você seria?</h1>
-        <p class="subtitulo-quiz">Responda as 8 questões e descubra seu perfil no mundo do ballet</p>
+        <h1 class="titulo-quiz">Quanto você conhece sobre o mundo do ballet?</h1>
+        <p class="subtitulo-quiz">Responda as 8 questões e descubra!</p>
 
-        <!-- Barra de progresso -->
         <div class="progresso-wrapper">
             <div class="progresso-label">
                 <span id="label-questao">Questão 1 de 8</span>
@@ -161,11 +157,10 @@
                 </div>
             </div>
 
-->
             <div class="nav-botoes" id="nav-botoes">
                 <button class="botao" id="anterior" onclick="AntQuestao()">← Anterior</button>
                 <button class="botao" id="proxima" onclick="ProxQuestao()">Próxima →</button>
-                <button class="botao" id="finalizar" onclick="FinalizarQuiz()">Finalizar Quiz ✓</button>
+                <button class="botao" id="finalizar" onclick="FinalizarQuiz()" >Finalizar Quiz ✓</button>
             </div>
 
         </div>

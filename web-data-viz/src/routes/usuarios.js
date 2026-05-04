@@ -12,4 +12,16 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+router.post("/cadastrarPontuacao", function (req, res) {
+    usuarioController.cadastrarPontuacao(req, res);
+});
+
+router.get("/buscarRanking", function (req, res) {
+    usuarioController.buscarRanking(req, res);
+});
+
+router.post("/cadastrarPersonalidade", function (req, res) {
+    usuarioController.cadastrarPersonalidade(req, res);
+});
+
 module.exports = router;
