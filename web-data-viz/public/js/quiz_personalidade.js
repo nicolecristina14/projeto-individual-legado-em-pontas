@@ -62,8 +62,8 @@ function FinalizarQuiz() {
         if (r.value === respostascorretas[i]) acertos++;
     });
 
-    pontos = acertos * 10;
-    media  = (pontos / 80) * 100;
+    pontos = acertos * 12.5;
+    media  = (pontos / 100) * 100;
 
     fetch("/usuarios/cadastrarPontuacao", {
         method: "POST",

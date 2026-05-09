@@ -1,16 +1,27 @@
 var database = require("../database/config");
-
-function buscarKpis() {
+ 
+function buscarKpis(idUsuario) {
     var instrucaoSql = `
         SELECT 
-            (SELECT COUNT(idUsuario) FROM usuario) as total,
-            (SELECT IFNULL(ROUND(AVG(pontuacao), 1), 0) FROM pontuacao) as media,
-            (SELECT perfil FROM personalidade GROUP BY perfil ORDER BY COUNT(*) DESC LIMIT 1) as perfil;
+            (SELECT IFNULL(MAX(pontuacao), 0) FROM pontuacao WHERE fkUsuario = ${idUsuario}) as media_pessoal,
+            (SELECT perfil FROM personalidade WHERE fkUsuario = ${idUsuario} ORDER BY idPersonalidade DESC LIMIT 1) as meu_perfil,
+            (SELECT IFNULL(ROUND(AVG(pontuacao), 1), 0) FROM pontuacao) as media_global;
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
-
+ 
+function buscarEvolucao(idUsuario) {
+    var instrucaoSql = `
+        SELECT 
+            pontuacao, 
+            DATE_FORMAT(dataHora, '%d/%m') as data_formatada
+        FROM pontuacao 
+        WHERE fkUsuario = ${idUsuario}
+        ORDER BY dataHora ASC;
+    `;
+    return database.executar(instrucaoSql);
+}
+ 
 function buscarDadosGraficos() {
     var instrucaoSql = `
         SELECT 
@@ -27,11 +38,11 @@ function buscarDadosGraficos() {
         FROM personalidade 
         GROUP BY perfil;
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
-
+ 
 module.exports = {
     buscarKpis,
+    buscarEvolucao,
     buscarDadosGraficos
 }

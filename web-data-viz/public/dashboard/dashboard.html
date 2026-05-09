@@ -21,9 +21,7 @@
 
 </head>
 
-<!-- <body onload=" atualizarFeed()"> -->
-
-<body>
+<body onload="carregarDashboard()">
 
     <div class="janela">
         <div class="header-left dash-header">
@@ -54,32 +52,40 @@
             </div>
         </div>
         <div class="dash-right">
+            <h2 class="titulo-quiz">Painel de Desempenho e Afinidade</h2>
             <div class="dash">
                 <div class="kpi-container">
                     <div class="kpi-card">
-                        <h4>Total de Participantes</h4>
-                        <p id="kpi_total_usuarios">0</p>
+                        <h4>Sua Personalidade</h4>
+                        <p id="kpi_perfil_usuario" style="font-size: 1.8rem; margin-top: 10px;">--</p>
                     </div>
                     <div class="kpi-card">
-                        <h4>Média de Acertos (História)</h4>
-                        <p id="kpi_media_acertos">0%</p>
+                        <h4>Sua Classificação (História)</h4>
+                        <p id="kpi_classificacao">--</p>
                     </div>
                     <div class="kpi-card">
-                        <h4>Perfil Mais Comum</h4>
-                        <p id="kpi_perfil_comum" style="font-size: 1.2rem;">--</p>
+                        <h4>Sua Melhor Pontuação (História)</h4>
+                        <p id="kpi_media_pessoal">0%</p>
                     </div>
                 </div>
 
                 <div class="graficos-grid">
                     <div class="grafico-card">
-                        <h3 class="titulo-grafico">Distribuição de Personalidades</h3>
+                        <h3 class="titulo-grafico">Distribuição das Personalidades dos Participantes</h3>
                         <div style="flex-grow: 1; position: relative;">
                             <canvas id="chartPersonalidade"></canvas>
                         </div>
                     </div>
+                    
                     <div class="grafico-card">
-                        <h3 class="titulo-grafico">Desempenho em História</h3>
-                        <canvas id="chartHistoria"></canvas>
+                        <h3 class="titulo-grafico">Desempenho em História dos Participantes</h3>
+                        <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center;">
+                            <canvas id="chartHistoria"></canvas>
+                        </div>
+                    </div>
+                    <div class="grafico-card">
+                        <h3 class="titulo-grafico">Sua evolução em História</h3>
+                        <canvas id="chartHistoriaDesenvolvimento"></canvas>
                     </div>
                 </div>
             </div>
@@ -92,105 +98,177 @@
 </html>
 
 <script>
-window.onload = function () {
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    exibirDadosDasKpis();
-    exibirDadosDosGraficos();
-};
+    window.onload = function carregarDashboard() {
+        var idUsuario = sessionStorage.ID_USUARIO;
 
-function exibirDadosDasKpis() {
-    fetch("/medidas/kpis", { cache: 'no-store' }).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (resposta) {
-                console.log(`Dados das KPIs recebidos: ${JSON.stringify(resposta)}`);
-             
-                var dados = resposta[0];
-                document.getElementById("kpi_total_usuarios").innerHTML = dados.total;
-                document.getElementById("kpi_media_acertos").innerHTML = dados.media + "%";
-                
-                // Lógica para transformar o número do perfil comum em nome na KPI
-                var nomePerfil = "";
-                var p = dados.perfil;
-                if (p == 1) nomePerfil = "Olenewa";
-                else if (p == 2) nomePerfil = "Dalal";
-                else if (p == 3) nomePerfil = "Botafogo";
-                else if (p == 4) nomePerfil = "Kerche";
-                else if (p == 5) nomePerfil = "Haydée";
-                else if (p == 6) nomePerfil = "Sagioro";
-                else nomePerfil = "Não definido";
+        b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-                document.getElementById("kpi_perfil_comum").innerHTML = nomePerfil;
+        exibirDadosDasKpis(idUsuario);
+        exibirDadosDosGraficos();
+        exibirEvolucao(idUsuario);
+    };
 
-                // Aproveitamos a média da KPI para plotar o gráfico de rosca
-                plotarGraficoHistoria(dados.media);
-            });
-        } else {
-            console.error('Erro na obtenção dos dados das KPIs');
-        }
-    });
-}
+    function exibirDadosDasKpis(idUsuario) {
+        fetch(`/medidas/kpis/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    var dados = resposta[0];
 
-function exibirDadosDosGraficos() {
-    fetch("/medidas/graficos", { cache: 'no-store' }).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (resposta) {
-                console.log(`Dados dos Gráficos recebidos: ${JSON.stringify(resposta)}`);
-                
-                // Como o console mostrou que 'resposta' já é a lista, passamos ela direto
-                plotarGraficoPersonalidade(resposta);
-            });
-        }
-    });
-}
+                    //KPI 1: CLASSIFICAÇÃO (Nível de Conhecimento)
+                    var classificacao = "";
+                    var feedback = "";
 
-function plotarGraficoPersonalidade(dadosBanco) {
-    let labels = [];
-    let valores = [];
+                    if (dados.media_pessoal >= 80) {
+                        classificacao = "Étoile (Estrela)";
+                        feedback = "Desempenho digno de um primeiro bailarino!";
+                    } else if (dados.media_pessoal >= 50) {
+                        classificacao = "Grand Pas";
+                        feedback = "Técnica e conhecimento em plena harmonia.";
+                    } else if (dados.media_pessoal >= 50) {
+                        classificacao = "Allegro";
+                        feedback = "Você está ganhando agilidade e brilho.";
+                    } else if (dados.media_pessoal >= 50) {
+                        classificacao = "Adágio";
+                        feedback = "Passo a passo, construindo sua base com calma.";
+                    } else {
+                        classificacao = "Barre (Barra)";
+                        feedback = "O início de todo grande legado começa aqui.";
+                    }
 
-    // Agora o loop vai funcionar porque dadosBanco é o array direto
-    for (let i = 0; i < dadosBanco.length; i++) {
-        labels.push(dadosBanco[i].nome_bailarina);
-        valores.push(dadosBanco[i].quantidade);
+                    document.getElementById("kpi_classificacao").innerHTML =
+                        `${classificacao} <br> <span style="font-size: 0.9rem; font-weight: normal;">${feedback}</span>`;
+
+                    //KPI 2: MELHOR PONTUAÇÃO (História)
+
+                    //KPI 1: CLASSIFICAÇÃO (Nível de Conhecimento)
+                    var statusDesempenho = "";
+                    var corStatus = "";
+                    var meta = 70;
+
+                    if (dados.media_pessoal >= meta) {
+                        statusDesempenho = "Dentro do Esperado (Meta:70%)";
+                        corStatus = "#2ecc71"; // Verde
+                    } else {
+                        statusDesempenho = "Abaixo do Esperado (Meta:70%)";
+                        corStatus = "#e74c3c"; // Vermelho
+                    }
+
+                    document.getElementById("kpi_media_pessoal").innerHTML = `${dados.media_pessoal}% <br>
+                    <span style="font-size: 0.9rem; font-weight: bold; color: ${corStatus};">${statusDesempenho}</span>`;
+
+                    // KPI 3: PERSONALIDADE (Afinidade) 
+                    var perfis = ["", "Maria Olenewa", "Dalal Achcar", "Ana Botafogo", "Cecília Kerche", "Marcia Haydée", "Vitoria Sagioro"];
+                    var nomePerfil = perfis[dados.meu_perfil] || "Não definido";
+
+                    // Cálculo de afinidade - média global vs pessoal
+                    var afinidade = dados.media_pessoal > 0 ? "Alta Afinidade" : "";
+
+                    document.getElementById("kpi_perfil_usuario").innerHTML =
+                        `${nomePerfil} <br> <span style="font-size: 0.9rem; font-weight: normal;">Sua alma gêmea no ballet</span>`;
+
+                    // Gráfico de Rosca (Sua nota vs Média Global)
+                    plotarGraficoHistoria(dados.media_pessoal, dados.media_global);
+                });
+            }
+        });
     }
 
-    const ctxPerso = document.getElementById('chartPersonalidade').getContext('2d');
-    
-    new Chart(ctxPerso, {
-        type: 'bar',
+    // 2. Busca dados para o gráfico de Barras (Distribuição Geral)
+    function exibirDadosDosGraficos() {
+        fetch("/medidas/graficos", { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    plotarGraficoPersonalidade(resposta);
+                });
+            }
+        });
+    }
+
+    // 3. Busca dados para o gráfico de Linha (Sua Evolução)
+    function exibirEvolucao(idUsuario) {
+        fetch(`/medidas/evolucao/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    plotarGraficoEvolucao(resposta);
+                });
+            }
+        });
+    }
+
+    // PLOTAR OS GRÁFICOS (Chart.js) ---
+
+    function plotarGraficoPersonalidade(dadosBanco) {
+        const ctxPerso = document.getElementById('chartPersonalidade').getContext('2d');
+        new Chart(ctxPerso, {
+            type: 'bar',
+            data: {
+                labels: dadosBanco.map(d => d.nome_bailarina),
+                datasets: [{
+                    label: 'Resuldados do Quiz',
+                    data: dadosBanco.map(d => d.quantidade),
+                    backgroundColor: '#da7d30'
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    }
+
+    function plotarGraficoEvolucao(dados) {
+    const ctx = document.getElementById('chartHistoriaDesenvolvimento').getContext('2d');
+    const labels = dados.map(d => d.data_formatada);
+    const valores = dados.map(d => d.pontuacao);
+
+    new Chart(ctx, {
+        type: 'line',
         data: {
             labels: labels,
             datasets: [{
-                label: 'Usuários por Perfil',
+                label: 'Sua Pontuação (%)',
                 data: valores,
-                backgroundColor: '#da7d30'
+                borderColor: '#da7d30',
+                backgroundColor: 'rgba(218, 125, 48, 0.1)',
+                fill: true,
+                tension: 0.3
             }]
         },
         options: { 
-            indexAxis: 'y', 
             responsive: true, 
-            maintainAspectRatio: false 
+            maintainAspectRatio: false,
+            scales: {
+                y: { beginAtZero: true, max: 100 }
+            }
         }
     });
 }
 
-function plotarGraficoHistoria(mediaAcertos) {
-    const ctxHist = document.getElementById('chartHistoria').getContext('2d');
-    
-    // Calculamos a porcentagem de erros para completar 100%
-    var acertos = Number(mediaAcertos);
-    var erros = 100 - acertos;
-
-    new Chart(ctxHist, {
-        type: 'doughnut',
-        data: {
-            labels: ['Acertos', 'Erros'],
-            datasets: [{
-                data: [acertos, erros],
-                backgroundColor: ['#da7d30', '#fde8dc'],
-                hoverOffset: 4
-            }]
-        },
-        options: { responsive: true, maintainAspectRatio: false }
-    });
-}
+    function plotarGraficoHistoria(pessoal, global) {
+        const ctxHist = document.getElementById('chartHistoria').getContext('2d');
+        new Chart(ctxHist, {
+            type: 'doughnut',
+            data: {
+                labels: ['Sua Média', 'Média dos Outros'],
+                datasets: [{
+                    data: [pessoal, global],
+                    backgroundColor: ['#da7d30', '#fde8dc'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                    padding: 20
+                },
+                plugins: {
+                    legend: {
+                        position: 'bottom' // Legenda embaixo para ganhar espaço lateral
+                    }
+                }
+            }
+        });
+    }
 </script>

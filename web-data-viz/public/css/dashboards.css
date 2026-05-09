@@ -138,6 +138,12 @@ body {
     padding: 50px 40px 60px;
 }
 
+.dash-right h2 {
+    margin-top: -15px;
+    margin-bottom: 19px;
+    color: #bc5431;
+}
+
 /* TÍTULO  */
 .titulo-quiz {
     font-family: 'Alice', serif;
@@ -488,49 +494,82 @@ body {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    gap: 40px;
-    margin-bottom: 30px;
+    gap: 50px;
+    margin-bottom: 35px;
     margin-top: 20px;
 }
 
 .kpi-card {
+    width: 30px;
     background: white;
-    padding: 20px;
+    padding: 10px;
     border-radius: 15px;
     flex: 1;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     border-top: 5px solid #da7d30;
     border-bottom: 20px;
+    transition: transform 0.3s;
 }
 
 .kpi-card h4 { color: #b06038; font-size: 0.9rem; margin-bottom: 10px; }
 .kpi-card p { color: #da7d30; font-size: 2rem; font-weight: 700; }
 
 .graficos-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+    justify-content: space-between;
     gap: 20px;
     width: 100%;
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .grafico-card {
     background: white;
-    padding: 25px;
+    padding: 20px;
     border-radius: 20px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    height: 450px;
-    position: relative;
+    height: 420px; /* Altura fixa para manter o alinhamento */
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
-    margin-top: 15px;
+    transition: transform 0.3s;
+}
+
+.grafico-card:hover {
+    transform: translateY(-5px);
+}
+
+.kpi-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Proporções específicas */
+.grafico-card:nth-child(1), 
+.grafico-card:nth-child(3) {
+    flex: 2; 
+    min-width: 350px;
+}
+
+/* Gráfico de Rosca (Desempenho) ocupa menos espaço */
+.grafico-card:nth-child(2) {
+    flex: 1.2;
+    min-width: 280px;
+}
+
+/* Ajuste para não estourar a div */
+.grafico-card canvas {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 300px; /* Garante que o gráfico não empurre o título para fora */
 }
 
 .titulo-grafico {
     font-family: 'Alice', serif;
     color: #da7d30;
     text-align: center;
-    margin-bottom: 20px;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    height: 40px; /* Altura fixa para os títulos ficarem alinhados */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
